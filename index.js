@@ -28,6 +28,11 @@ app.get("/api", function(req, res) {
   res.json({ unix: now.getTime(), utc: now.toUTCString() });
 });
 
+app.get("/api/", function(req, res) {
+  let now = new Date();
+  res.json({ unix: now.getTime(), utc: now.toUTCString() });
+});
+
 app.get("/api/:date?", function(req, res) {
   let input = req.params.date;
   
