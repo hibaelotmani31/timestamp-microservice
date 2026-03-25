@@ -40,6 +40,11 @@ app.get("/api/:date?", function(req, res) {
   res.json({ unix: date.getTime(), utc: date.toUTCString() });
 });
 
+const https = require('https');
+setInterval(() => {
+  https.get('https://timestamp-microservice-m9hd.onrender.com/api');
+}, 14 * 60 * 1000);
+
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
