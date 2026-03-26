@@ -1,7 +1,5 @@
-// index.js
 var express = require('express');
 var app = express();
-app.set('strict routing', false);
 var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));
 app.use(express.static('public'));
@@ -12,11 +10,6 @@ app.get("/", function (req, res) {
 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
-});
-
-app.get("/api", function(req, res) {
-  let now = new Date();
-  res.json({ unix: now.getTime(), utc: now.toUTCString() });
 });
 
 app.get("/api/:date?", function(req, res) {
@@ -40,7 +33,6 @@ app.get("/api/:date?", function(req, res) {
 
   res.json({ unix: date.getTime(), utc: date.toUTCString() });
 });
-
 
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
